@@ -1,7 +1,7 @@
 // Write your Pizza Builder JavaScript in this file.
 
 // Constants
-const basePrice = 10;
+let basePrice = 10;
 const ingredients = {
   pepperoni: { name: 'pepperoni', price: 1 },
   mushrooms: { name: 'Mushrooms', price: 1 },
@@ -89,7 +89,6 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
-  
 
   document.querySelector('.btn.btn-pepperoni').classList.toggle('active');
   document.querySelector('.btn.btn-mushrooms').classList.toggle('active');
@@ -100,6 +99,34 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  
+  const newListPrice = document.querySelector('.panel.price strong');
+  newListPrice.innerText = `$${basePrice+3}`;
+
+
+  if (state.pepperoni === false) {
+    basePrice += 1;
+  } else {     basePrice -= 1;
+  } 
+
+  if (state.mushrooms === false) {
+    basePrice += 1;
+  } else {     basePrice -= 1;
+  }
+  if (state.greenPeppers === false) {
+    basePrice += 1;
+  } else {     basePrice -= 1;
+  }
+  
+  if (state.glutenFreeCrust=== false ) {
+    basePrice += 5;
+  } else {basePrice -= 5;}
+ 
+  if (state.whiteSauce=== false ) {
+    basePrice += 3;
+  } else {basePrice -= 3;}
+
+
 }
 
 renderEverything();
